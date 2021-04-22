@@ -12,7 +12,7 @@ trap handle INT TERM
 
 if ! which -- "${1}"; then
   # first arg is not an executable
-  xvfb-run -a --server-args="-screen 0 1024x768x24" -- node /app/ "$@" -p ${TILESERVER_GL_PORT:-80} &
+  xvfb-run -a --server-args="-screen 0 1024x768x24" -- node ./ "$@" -p ${TILESERVER_GL_PORT:-8080} &
 	# Wait exits immediately on signals which have traps set. Store return value and wait
 	# again for all jobs to actually complete before continuing.
 	wait $! || RETVAL=$?
